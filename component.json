@@ -1,0 +1,28 @@
+{
+  "name": "select-popover",
+  "repo": "familyfound/select-popover",
+  "description": "Select tool based on component/popover",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "component/popover": "*",
+    "component/event": "*",
+    "component/classes": "*",
+    "component/emitter": "*",
+    "component/inherit": "*",
+    "component/tip": "*",
+    "component/aurora-tip": "*"
+  },
+  "development": {
+    "chaijs/chai": "*"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js",
+    "template.js"
+  ],
+  "styles": [
+    "select-popover.css"
+  ]
+}

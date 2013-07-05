@@ -1,0 +1,22 @@
+
+.select-popover .item {
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+
+.select-popover .item:hover {
+  background-color: #eee;
+}
+
+.select-popover .item.selected {
+  background-color: #555;
+  color: white;
+}
+
+.select-popover .tip-inner {
+  padding: 0;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
