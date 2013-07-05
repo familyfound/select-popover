@@ -9,6 +9,7 @@
   background-color: #eee;
 }
 
+.select-popover .item.selected:hover,
 .select-popover .item.selected {
   background-color: #555;
   color: white;

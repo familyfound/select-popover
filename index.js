@@ -88,6 +88,7 @@ Select.prototype.addClass = function (cls) {
 };
 
 Select.prototype.select = function (value, silent) {
+  if (!this.nodes[value] || value === this.selected) return;
   if (!silent) {
     this.emit('select', value);
   }
