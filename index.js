@@ -43,7 +43,7 @@ function Select(items, label) {
   this.position('north');
   this.label = label;
   if (label) {
-    label.innerText = this.items[this.selected].title;
+    this.select(this.selected, true);
     events.bind(label, 'click', function (e) {
       events.unbind(document, 'click', hide);
       self.show(label);
@@ -67,7 +67,12 @@ inherit(Select, Tip);
 Select.prototype.newItem = function (item) {
   var node = el('div', 'item' + (item['class'] ? ' ' + item['class'] : ''))
   , self = this;
-  node.innerText = item.title || item.value;
+  if (item.html) {
+    node.innerHTML = item.html;
+  } else {
+    if (!item.title) item.title = item.value;
+    node.innerText = item.title;
+  }
   events.bind(node, 'click', function (e){
     e.preventDefault();
     e.stopPropagation();
@@ -78,12 +83,21 @@ Select.prototype.newItem = function (item) {
   return node;
 };
 
-Select.prototype.select = function (value) {
-  this.emit('select', value);
+Select.prototype.addClass = function (cls) {
+  this.classname += ' ' + cls;
+};
+
+Select.prototype.select = function (value, silent) {
+  if (!silent) {
+    this.emit('select', value);
+  }
   classes(this.nodes[this.selected]).remove('selected');
   this.selected = value;
   classes(this.nodes[this.selected]).add('selected');
-  if (this.label) {
-    this.label.innerText = this.items[value].title;
+  if (this.label) {if (this.items[value].html) {
+      this.label.innerHTML = this.items[value].html;
+    } else {
+      this.label.innerText = this.items[value].title;
+    }
   }
 };

@@ -8,8 +8,31 @@
       body {
         padding: 30px 50px;
       }
+      .select-popover .item.active.selected {
+        background-color: #559;
+      }
       .select-popover .item.active {
-        background-color: #aaf;
+        background-color: #eef;
+      }
+      .container > span {
+        margin-right: 10px;
+        cursor: pointer;
+      }
+      span.circle {
+        display: inline-block;
+        margin: 5px 5px 0;
+        height: 15px;
+        width: 15px;
+        border-radius: 10px;
+      }
+      .circle.blue {
+        background-color: blue;
+      }
+      .circle.green {
+        background-color: green;
+      }
+      .circle.yellow {
+        background-color: yellow;
       }
     </style>
   </head>
@@ -21,6 +44,7 @@
       <hr/>
       <span id="el">Attached to this element</span>
       <span id="colored">Attached to this element</span>
+      <span id="html">Attached to this element</span>
     </div>
     <script src="../build/build.js"></script>
     <script src="setup-e2e.js"></script>
