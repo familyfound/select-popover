@@ -35,9 +35,8 @@ function Select(items, label) {
     div.appendChild(this.nodes[items[i].value]);
   }
   if (typeof(this.selected) === 'undefined') {
-    this.selected = items[0].value;
+    this.select(this.selected, true);
   }
-  classes(this.nodes[this.selected]).add('selected');
   Tip.call(this, div);
   this.classname = 'select-popover';
   this.position('north');
@@ -92,7 +91,9 @@ Select.prototype.select = function (value, silent) {
   if (!silent) {
     this.emit('select', value);
   }
-  classes(this.nodes[this.selected]).remove('selected');
+  if (this.nodes[this.selected]) {
+    classes(this.nodes[this.selected]).remove('selected');
+  }
   this.selected = value;
   classes(this.nodes[this.selected]).add('selected');
   if (this.label) {if (this.items[value].html) {
