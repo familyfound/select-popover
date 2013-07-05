@@ -45,17 +45,17 @@ function Select(items, label) {
   if (label) {
     label.innerText = this.items[this.selected].title;
     events.bind(label, 'click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
+      events.unbind(document, 'click', hide);
       self.show(label);
-      return false;
     });
   }
   var hide = function (e) {
     self.hide();
   };
   this.on('show', function () {
-    events.bind(document, 'click', hide);
+    setTimeout(function () {
+      events.bind(document, 'click', hide);
+    }, 0);
   });
   this.on('hide', function () {
     events.unbind(document, 'click', hide);
@@ -68,9 +68,12 @@ Select.prototype.newItem = function (item) {
   var node = el('div', 'item' + (item['class'] ? ' ' + item['class'] : ''))
   , self = this;
   node.innerText = item.title || item.value;
-  events.bind(node, 'click', function (){
+  events.bind(node, 'click', function (e){
+    e.preventDefault();
+    e.stopPropagation();
     self.select(item.value);
     self.hide();
+    return false;
   });
   return node;
 };

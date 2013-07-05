@@ -2,7 +2,7 @@
 all: build
 	@:
 
-build: components index.js select-popover.css template.js
+build: index.js select-popover.css template.js
 	jshint index.js
 	@component build --dev
 
